@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.appsmindstudio.marrygesture.R
+import com.appsmindstudio.marrygesture.ui.components.TextComponent
 import com.appsmindstudio.marrygesture.viewmodel.ProfileDetailsScreenViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -74,7 +75,6 @@ fun ProfileDetailsScreen(
         Box(
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .fillMaxWidth()
                 .padding(25.dp)
                 .clickable { onBackPressed() } //navigate to GestureScreen when click this component
         ) {
@@ -143,18 +143,18 @@ fun DetailsComponent(name: String, description: String) {
         colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(modifier = Modifier.padding(horizontal = 15.dp, vertical = 20.dp)) {
-            Text(
+            TextComponent(
                 text = name,
                 color = Color.Black,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
+                size = 20.sp,
+                weight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(5.dp))
-            Text(
+            TextComponent(
                 text = description,
                 color = Color.Black,
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Normal
+                size = 14.sp,
+                weight = FontWeight.Normal
             )
         }
     }

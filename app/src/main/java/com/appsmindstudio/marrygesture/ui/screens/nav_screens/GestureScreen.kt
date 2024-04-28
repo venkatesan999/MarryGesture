@@ -142,7 +142,7 @@ fun ConditionalVisibility(
                     .align(Alignment.TopCenter)
                     .width(350.dp)
                     .height(100.dp)
-                    .padding(12.dp), shape = RoundedCornerShape(13.dp),
+                    .padding(11.dp), shape = RoundedCornerShape(13.dp),
                 colors = CardDefaults.cardColors(containerColor = Color(0x80FFFFFF))
             ) {}
         }

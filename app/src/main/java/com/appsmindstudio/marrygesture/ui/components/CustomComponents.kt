@@ -34,6 +34,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.appsmindstudio.marrygesture.R
@@ -71,25 +72,21 @@ fun ProfileCardComponent(
                     .weight(0.4f)
                     .padding(top = 10.dp, start = 10.dp, end = 10.dp)
                     .clickable { navigateToProfileDetailsScreen() }) {
-                Text(
+                TextComponent(
                     text = title,
                     color = Color.Black,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold
+                    size = 16.sp,
+                    weight = FontWeight.Bold
                 )
-                Text(
-                    text = description,
-                    color = Color.Black,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Normal,
-                )
+                Spacer(modifier = Modifier.height(3.dp))
+                TextComponent(text = description, color = Color.Black, 13.sp, FontWeight.Normal)
             }
 
             // This is for horizontal alignment of your view
             Row(
                 modifier = Modifier
                     .weight(0.2f)
-                    .padding(start = 10.dp, end = 10.dp, bottom = 10.dp)
+                    .padding(start = 10.dp, end = 10.dp, bottom = 6.dp)
             ) {
                 Button(
                     modifier = Modifier
@@ -169,18 +166,18 @@ fun GestureCardComponent(
                     .weight(0.2f)
                     .padding(start = 15.dp, end = 15.dp)
                     .clickable { navigateToProfileDetailsScreen() }) {
-                Text(
+                TextComponent(
                     text = title,
                     color = Color.Black,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold
+                    size = 20.sp,
+                    weight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(5.dp))
-                Text(
+                TextComponent(
                     text = description,
                     color = Color.Black,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Normal,
+                    size = 14.sp,
+                    weight = FontWeight.Normal
                 )
                 HorizontalDivider(
                     color = Color(0X10000000),
@@ -249,10 +246,20 @@ fun ButtonComponent(onDelete: () -> Unit, context: Context, title: String, modif
             contentPadding = PaddingValues(0.dp), // Remove default padding
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xFFD09B04),
-                contentColor = Color.White
+                contentColor = Color.White,
             )
         ) {
-            Text(text = "Yes")
+            Icon(
+                painter = painterResource(id = R.drawable.tick),
+                contentDescription = null,
+                modifier = Modifier.size(18.dp),
+                tint = Color.White
+            )
         }
     }
+}
+
+@Composable
+fun TextComponent(text: String, color: Color, size: TextUnit, weight: FontWeight) {
+    Text(text = text, color = color, fontSize = size, fontWeight = weight)
 }
