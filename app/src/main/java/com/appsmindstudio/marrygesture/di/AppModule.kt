@@ -2,8 +2,6 @@ package com.appsmindstudio.marrygesture.di
 
 import android.app.Application
 import androidx.room.Room
-import com.appsmindstudio.marrygesture.data.local.room.dao.DailyRecommendationsDao
-import com.appsmindstudio.marrygesture.data.local.room.dao.ProfileListDao
 import com.appsmindstudio.marrygesture.data.local.room.database.MarryDatabase
 import com.appsmindstudio.marrygesture.data.local.room.repository.DailyRecommendationRepository
 import com.appsmindstudio.marrygesture.data.local.room.repository.ProfileRepository
@@ -27,25 +25,13 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideProfileDao(database: MarryDatabase): ProfileListDao {
-        return database.gestureDao()
+    fun provideProfileRepository(database: MarryDatabase): ProfileRepository {
+        return ProfileRepository(database.profileListDao())
     }
 
     @Provides
     @Singleton
-    fun provideDailyRecommendationsDao(database: MarryDatabase): DailyRecommendationsDao {
-        return database.dailyRecommendationsDao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideProfileRepository(profileListDao: ProfileListDao): ProfileRepository {
-        return ProfileRepository(profileListDao)
-    }
-
-    @Provides
-    @Singleton
-    fun provideDailyRecommendationRepository(dailyRecommendationsDao: DailyRecommendationsDao): DailyRecommendationRepository {
-        return DailyRecommendationRepository(dailyRecommendationsDao)
+    fun provideDailyRecommendationRepository(database: MarryDatabase): DailyRecommendationRepository {
+        return DailyRecommendationRepository(database.dailyRecommendationsDao())
     }
 }
