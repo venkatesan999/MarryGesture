@@ -16,11 +16,5 @@ abstract class MarryDatabase : RoomDatabase() {
 
     companion object {
         const val DATABASE_NAME = "MarryGesture"
-
-        val MIGRATION_0_1 = object : Migration(0, 1) {
-            override fun migrate(db: SupportSQLiteDatabase) {
-                // No need to create tables explicitly, Room handles this based on entity classes
-            }
-        }
     }
 }

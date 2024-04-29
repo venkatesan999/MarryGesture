@@ -18,7 +18,6 @@ class AppModule {
     @Singleton
     fun providesDatabase(app: Application): MarryDatabase =
         Room.databaseBuilder(app, MarryDatabase::class.java, MarryDatabase.DATABASE_NAME)
-            .addMigrations(MarryDatabase.MIGRATION_0_1)
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .build()
